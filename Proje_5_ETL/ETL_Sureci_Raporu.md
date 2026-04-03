@@ -1,1 +1,7 @@
-Veritabani altyapi hazirliklari basladi, Kaggle uzerinden veri setleri taraniyor. 
+ETL Süreci Log Kayıtları
+
+Gün 1:
+
+    Veritabanı altyapı hazırlıkları başladı, Kaggle üzerinden veri setleri taranıyor.
+
+    New York City Airbnb Data Cleaning veri seti indirildi ve MSSQL aktarımına hazırlanıyor.
