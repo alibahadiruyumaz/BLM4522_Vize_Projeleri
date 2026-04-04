@@ -11,3 +11,4 @@ ETL Süreci Log Kayıtları
 * **Kirlilik Tespiti:** `neighbourhood_group` (Bölge) kolonunda yazım hataları ("brookln", "manhatan") ve 29 adet `NULL` değer tespit edildi.
 * **Teknik Müdahale:** * `UPDATE` komutları ile hatalı bölge kayıtları standartlaştırılarak (Brooklyn, Manhattan) düzeltildi.
   * İlerideki coğrafi ve istatistiksel analizlerin doğruluğunu tehlikeye atan, lokasyonu belirsiz (NULL) 29 kayıt `DELETE` komutu ile temizlendi.
+* **Veri Bütünlüğü (Data Integrity):** id kolonunda tekrar eden (duplicate) 541 adet mükerrer kayıt tespit edildi. CTE ve ROW_NUMBER() pencere fonksiyonu kullanılarak orijinal kayıtlar korundu, kopya olan 541 asalak satır sistemden silindi.
