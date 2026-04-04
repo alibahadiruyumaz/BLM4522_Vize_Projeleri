@@ -7,8 +7,9 @@ ETL Süreci Log Kayıtları
   * İstatistiksel sapmayı önlemek adına fiyatı veya servis ücreti bulunmayan (NULL) %0.26'lık veri kümesi (486 satır) `DELETE` komutu ile veri setinden çıkarıldı.
   * `last_review` kolonu tip güvenli `DATE` formatına dönüştürüldü. Veri tekrarını ve disk israfını önlemek amacıyla işlevi biten eski kolonlar `DROP COLUMN` ile veritabanından kaldırıldı.
 
-## Gün 2: Kategori Standardizasyonu ve Coğrafi Veri Temizliği
+## Gün 2: Kategori Standardizasyonu, Temizlik ve Üretime Yükleme (04 Nisan 2026)
 * **Kirlilik Tespiti:** `neighbourhood_group` (Bölge) kolonunda yazım hataları ("brookln", "manhatan") ve 29 adet `NULL` değer tespit edildi.
-* **Teknik Müdahale:** * `UPDATE` komutları ile hatalı bölge kayıtları standartlaştırılarak (Brooklyn, Manhattan) düzeltildi.
+* **Teknik Müdahale (Transform):** * `UPDATE` komutları ile hatalı bölge kayıtları standartlaştırılarak (Brooklyn, Manhattan) düzeltildi.
   * İlerideki coğrafi ve istatistiksel analizlerin doğruluğunu tehlikeye atan, lokasyonu belirsiz (NULL) 29 kayıt `DELETE` komutu ile temizlendi.
-* **Veri Bütünlüğü (Data Integrity):** id kolonunda tekrar eden (duplicate) 541 adet mükerrer kayıt tespit edildi. CTE ve ROW_NUMBER() pencere fonksiyonu kullanılarak orijinal kayıtlar korundu, kopya olan 541 asalak satır sistemden silindi.
+  * `id` kolonunda Veri Bütünlüğünü (Data Integrity) bozan 541 adet mükerrer (duplicate) kayıt CTE ve `ROW_NUMBER()` pencere fonksiyonu ile tespit edilip sistemden fiziksel olarak kazındı.
+* **Veri Yükleme (Load):** Temizlenmiş verilerin analiz modellerinde yüksek performansla çalışabilmesi için `id` kolonunun `PRIMARY KEY` olarak kilitlendiği `Production_Airbnb_Data` (Üretim) tablosu inşa edildi. Transform testlerinden geçen 101.544 satırlık güvenilir veri bu tabloya aktarılarak ETL döngüsü tamamlandı.
