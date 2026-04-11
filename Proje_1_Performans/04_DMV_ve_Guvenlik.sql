@@ -32,13 +32,15 @@ WHERE s.database_id = DB_ID('DB_Performans')
 ORDER BY user_seeks DESC;
 GO
 
--- 3. GÜVENLİK VE ROL YÖNETİMİ
+-- 3. GÜVENLİK VE ROL YÖNETİMİ (Düzeltilmiş RBAC Mimarisi)
 CREATE LOGIN AnalistLogin WITH PASSWORD = 'Sifre123_Analist';
 GO
 
 CREATE USER AnalistUser FOR LOGIN AnalistLogin;
 GO
 
+-- Eksik olan okuma yetkisi eklendi. Aksi takdirde analistin JOIN işlemleri reddedilir.
+GRANT SELECT ON Olist_Customers TO AnalistUser;
 GRANT SELECT ON Olist_Orders TO AnalistUser;
 GRANT SELECT ON Olist_Order_Items TO AnalistUser;
 GO
