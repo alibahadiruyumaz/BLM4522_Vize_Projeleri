@@ -92,4 +92,4 @@ Veritabanının yetkisiz müdahalelere karşı korunması amacıyla En Az Yetki 
 
 Bu proje kapsamında Olist Brazilian E-Commerce veri seti üzerinde dört aşamalı bir performans optimizasyon döngüsü uygulanmıştır. Gün 1'de ilişkisel mimari kurulmuş, veri tipleri düzeltilmiş ve test ortamı hazırlanmıştır. Gün 2'de stres testi ile sistemin indekssiz durumdaki I/O ve CPU maliyeti ölçülmüş, referans değerler belgelenmiştir. Gün 3'te Non-Clustered indeksler ve SARGable sorgu tasarımı ile disk I/O maliyeti %62, sorgu tamamlanma süresi %55 oranında düşürülmüştür. Gün 4'te DMV telemetrisiyle iyileştirmenin kalıcılığı doğrulanmış ve rol tabanlı erişim kontrolüyle veritabanı güvenliği sağlanmıştır.
 
-**Proje tanıtım videosu:** https://youtu.be/PeI-qhtNyhU
+**Proje tanıtım videosu:** https://youtu.be/I-C4cze0b7Y
